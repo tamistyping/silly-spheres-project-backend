@@ -3,10 +3,14 @@ const Planet = require('../models/planets') // Import planets model
 // Get all Planets
 exports.getAllPlanets = async (req, res) => {
   try {
+    console.log(req.params.id);
     const { planetId } = req.query
-    const planets = await Planet.find({ planetId })
+    console.log(req.query);
+    const planets = await Planet.find({star: req.params.id})
+    console.log(planets)
     res.json(planets)
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: 'Server error' }) // If error, send server error
   }
 }
