@@ -4,6 +4,9 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const starRoutes = require('./routes/stars')
 const planetRoutes = require('./routes/planets')
+const userRoutes = require('./routes/users')
+const fetch = require('node-fetch')
+
 require('dotenv').config()
 
 const app = express()
@@ -25,6 +28,7 @@ mongoose.connect(process.env.DBURL)
 
 app.use('/stars', starRoutes)
 app.use('/planets', planetRoutes)
+app.use('/users', userRoutes)
 
 // Start server
 app.listen(port, () => {

@@ -31,10 +31,11 @@ exports.getPlanetById = async (req, res) => {
 // Create a new planet
 exports.createPlanet = async (req, res) => {
     try {
-      const { name, star, size, lengthOfDay, lengthOfYear, atmosphere, moons } = req.body
+      const { name, image, star, size, lengthOfDay, lengthOfYear, atmosphere, moons } = req.body
   
       const newPlanet = new Planet({
         name,
+        image,
         star,
         size,
         lengthOfDay,
@@ -56,14 +57,14 @@ exports.createPlanet = async (req, res) => {
 exports.updatePlanet = async (req, res) => {
   try {
     const { id } = req.params; 
-    const { name, star, size, lengthOfDay, lengthOfYear, atmosphere, moons } = req.body;
-    // console.log(id)
+    const { name, image, size, lengthOfDay, lengthOfYear, atmosphere, moons } = req.body;
     const planet = await Planet.findByIdAndUpdate(
       id, 
-      { name, star, size, lengthOfDay, lengthOfYear, atmosphere, moons },
+      { name, image, size, lengthOfDay, lengthOfYear, atmosphere, moons },
       { new: true }
     )
-    res.json(planet)
+    console.log(planet);
+    res.sendStatus(200)
   } catch (error) {
     res.status(500).json({ error: 'Server error' })
   }

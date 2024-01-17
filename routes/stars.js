@@ -4,5 +4,10 @@ const starController = require('../controllers/stars') // import stars controlle
 
 router.get('/', starController.getAllStars);
 router.post('/', starController.createStar);
+router.put('/:id', starController.updateStar)
 
 module.exports = router;
+
+
+
+

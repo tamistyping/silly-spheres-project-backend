@@ -6,6 +6,10 @@ const planetSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  image: {
+    type: String,
+    required: true,
+  },
   star: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Star',
@@ -30,8 +34,7 @@ const planetSchema = new mongoose.Schema({
   moons: {
     type: Number,
     required: true,
-  },
-
+  }
 });
 
 const Planet = mongoose.model('Planet', planetSchema);

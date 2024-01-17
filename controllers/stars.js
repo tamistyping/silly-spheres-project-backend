@@ -1,6 +1,6 @@
 const Star = require('../models/stars'); // Import stars model
 
-// Get all stars
+// Get all Stars
 exports.getAllStars = async (req, res) => {
   try {
     const { starId } = req.query
@@ -11,14 +11,15 @@ exports.getAllStars = async (req, res) => {
   }
 }
 
-// Create a new Sun
+// Create a new Star
 exports.createStar = async (req, res) => {
   try {
-    const { name } = req.body
+    const { name, image } = req.body
     const { starId } = req.query
     // create new Sun
     const star = new Star({
       name,
+      image,
       starId: starId,
     })
     await star.save()
@@ -26,5 +27,22 @@ exports.createStar = async (req, res) => {
   } catch (error) {
     console.log(error)
     res.status(500).json({ error: 'Server error' + error });
+  }
+}
+
+// Update star
+exports.updateStar = async (req, res) => {
+  try {
+    const { id } = req.params; 
+    const { name, image } = req.body;
+    const star = await Star.findByIdAndUpdate(
+      id, 
+      { name, image },
+      { new: true }
+    )
+    console.log(star);
+    res.sendStatus(200)
+  } catch (error) {
+    res.status(500).json({ error: 'Server error' })
   }
 }
