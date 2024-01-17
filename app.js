@@ -5,7 +5,6 @@ const mongoose = require('mongoose')
 const starRoutes = require('./routes/stars')
 const planetRoutes = require('./routes/planets')
 const userRoutes = require('./routes/users')
-const fetch = require('node-fetch')
 
 require('dotenv').config()
 
