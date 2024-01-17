@@ -7,7 +7,6 @@ exports.getAllPlanets = async (req, res) => {
     const { planetId } = req.query
     console.log(req.query);
     const planets = await Planet.find({star: req.params.id})
-    console.log(planets)
     res.json(planets)
   } catch (error) {
     console.log(error);
