@@ -4,9 +4,9 @@ import cors from 'cors'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 
-import starRoutes from "./routes/stars.js";
-import planetRoutes from "./routes/planets.js";
-import userRoutes from "./routes/users.js";
+import starRoutes from "../../routes/stars.js";
+import planetRoutes from "../../routes/planets.js";
+import userRoutes from "../../routes/users.js";
 
 const api = express();
 const router = express.Router();
