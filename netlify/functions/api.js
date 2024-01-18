@@ -34,5 +34,4 @@ router.use("/users", userRoutes);
 
 api.use("/api/", router);
 
-const handler = serverless(api);
-export { handler };
+export const handler = serverless(api)
