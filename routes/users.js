@@ -1,6 +1,7 @@
 import express from 'express';
-const router = express.Router(); // create router
 import userControllers from '../controllers/users.js'; 
+
+const router = express.Router(); // create router
 
 router.post('/login', userControllers.createUser);
 
