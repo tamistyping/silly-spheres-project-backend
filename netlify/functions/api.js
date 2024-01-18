@@ -1,37 +1,38 @@
-const cors = require("cors")
-const bodyParser = require("body-parser")
-const mongoose = require("mongoose")
-const serverless = require("serverless-http")
-const express = require("express")
-const router = express.Router()
+import cors from "cors";
+import bodyParser from "body-parser";
+import mongoose from "mongoose";
+import serverless from "serverless-http";
+import express from "express";
 
-const starRoutes = require("../../routes/stars")
-const planetRoutes = require("../../routes/planets")
-const userRoutes = require("../../routes/users")
+import starRoutes from "../../routes/stars";
+import planetRoutes from "../../routes/planets";
+import userRoutes from "../../routes/users";
 
-require("dotenv").config()
+import dotenv from "dotenv";
+dotenv.config();
 
-const api = express()
+const api = express();
+const router = express.Router();
 
-api.use(cors())
-// api.use(express.json())
-api.use(bodyParser.json())
+api.use(cors());
+api.use(express.json());
+api.use(bodyParser.json());
 
 // Connect to MongoDB
 mongoose
   .connect(process.env.DBURL)
   .then(() => {
-    console.log("Connected to MongoDB")
+    console.log("Connected to MongoDB");
   })
   .catch((error) => {
-    console.error("Failed to connect to MongoDB", error)
-  })
+    console.error("Failed to connect to MongoDB", error);
+  });
 
-router.use("/stars", starRoutes)
-router.use("/planets", planetRoutes)
-router.use("/users", userRoutes)
+router.use("/stars", starRoutes);
+router.use("/planets", planetRoutes);
+router.use("/users", userRoutes);
 
-api.use("/api/", router)
+api.use("/api/", router);
 
-const handler = serverless(api)
-modules.export = { handler }
+const handler = serverless(api);
+export { handler };

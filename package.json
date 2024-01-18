@@ -9,6 +9,7 @@
   },
   "author": "Tam Parlak",
   "license": "ISC",
+  "type": "module",
   "dependencies": {
     "@netlify/functions": "^2.5.0",
     "@types/express": "^4.17.21",

@@ -1,13 +1,14 @@
-const express = require("express");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
+import express from "express";
+import cors from "cors";
+import bodyParser from "body-parser";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-const starRoutes = require("./routes/stars");
-const planetRoutes = require("./routes/planets");
-const userRoutes = require("./routes/users");
+import starRoutes from "./routes/stars";
+import planetRoutes from "./routes/planets";
+import userRoutes from "./routes/users";
 
-require("dotenv").config();
+dotenv.config();
 
 const app = express();
 const port = 3000;
