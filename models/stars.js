@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from 'mongoose';
 
 const starSchema = new mongoose.Schema({
   name: {
@@ -10,8 +10,8 @@ const starSchema = new mongoose.Schema({
     type: String,
     required: true,
   }
-})
+});
 
-const Star = mongoose.model("Stars", starSchema);
+const Star = mongoose.model('Stars', starSchema);
 
-module.exports = Star;
+export default Star;

@@ -1,12 +1,12 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router(); // create router
-const starController = require('../controllers/stars') // import stars controller
+import starController from '../controllers/stars'; // import stars controller
 
 router.get('/', starController.getAllStars);
 router.post('/', starController.createStar);
-router.put('/:id', starController.updateStar)
+router.put('/:id', starController.updateStar);
 
-module.exports = router;
+export default router;
 
 
 

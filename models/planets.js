@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from 'mongoose';
 
 const planetSchema = new mongoose.Schema({
   name: {
@@ -39,4 +39,4 @@ const planetSchema = new mongoose.Schema({
 
 const Planet = mongoose.model('Planet', planetSchema);
 
-module.exports = Planet;
+export default Planet;
