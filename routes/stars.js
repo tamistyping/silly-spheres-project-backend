@@ -1,6 +1,7 @@
 import express from 'express';
+import starController from '../controllers/stars.js'; // import stars controller
+
 const router = express.Router(); // create router
-import starController from '../controllers/stars'; // import stars controller
 
 router.get('/', starController.getAllStars);
 router.post('/', starController.createStar);

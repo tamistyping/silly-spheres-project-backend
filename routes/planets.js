@@ -1,6 +1,7 @@
 import express from 'express';
+import planetsController from '../controllers/planets.js'; // import planets controller
+
 const router = express.Router(); // create router
-import planetsController from '../controllers/planets'; // import planets controller
 
 // Route for getting all planets
 router.get('/list/:id', planetsController.getAllPlanets);

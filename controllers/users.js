@@ -1,4 +1,4 @@
-import User from '../models/users'; // Import users model
+import User from '../models/users.js'; // Import users model
 
 export const createUser = async (req, res) => {
     const now = new Date();
@@ -21,3 +21,9 @@ export const createUser = async (req, res) => {
         res.sendStatus(200);
     }
 };
+
+const userControllers = {
+    createUser
+}
+
+export default userControllers;

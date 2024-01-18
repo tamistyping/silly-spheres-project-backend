@@ -1,7 +1,7 @@
-import Star from '../models/stars'; // Import stars model
+import Star from '../models/stars.js'; // Import stars model
 
 // Get all Stars
-export const getAllStars = async (req, res) => {
+const getAllStars = async (req, res) => {
   try {
     const { starId } = req.query;
     const stars = await Star.find({ starId });
@@ -12,7 +12,7 @@ export const getAllStars = async (req, res) => {
 };
 
 // Create a new Star
-export const createStar = async (req, res) => {
+const createStar = async (req, res) => {
   try {
     const { name, image } = req.body;
     const { starId } = req.query;
@@ -31,7 +31,7 @@ export const createStar = async (req, res) => {
 };
 
 // Update star
-export const updateStar = async (req, res) => {
+const updateStar = async (req, res) => {
   try {
     const { id } = req.params;
     const { name, image } = req.body;
@@ -46,3 +46,11 @@ export const updateStar = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
+
+const starsControllers = {
+  getAllStars,
+  createStar,
+  updateStar
+}
+
+export default starsControllers;

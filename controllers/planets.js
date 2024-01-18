@@ -1,7 +1,7 @@
-import Planet from '../models/planets'; // Import planets model
+import Planet from '../models/planets.js'; // Import planets model
 
 // Get all Planets
-export const getAllPlanets = async (req, res) => {
+const getAllPlanets = async (req, res) => {
   try {
     console.log(req.params.id);
     const { planetId } = req.query;
@@ -14,7 +14,7 @@ export const getAllPlanets = async (req, res) => {
   }
 };
 
-export const getPlanetById = async (req, res) => {
+const getPlanetById = async (req, res) => {
   try {
     const planetId = req.params.id;
     const planet = await Planet.findById(planetId);
@@ -29,7 +29,7 @@ export const getPlanetById = async (req, res) => {
 };
 
 // Create a new planet
-export const createPlanet = async (req, res) => {
+const createPlanet = async (req, res) => {
   try {
     const { name, image, star, size, lengthOfDay, lengthOfYear, atmosphere, moons } = req.body;
 
@@ -54,7 +54,7 @@ export const createPlanet = async (req, res) => {
 };
 
 // Update a Planet
-export const updatePlanet = async (req, res) => {
+const updatePlanet = async (req, res) => {
   try {
     const { id } = req.params;
     const { name, image, size, lengthOfDay, lengthOfYear, atmosphere, moons } = req.body;
@@ -71,7 +71,7 @@ export const updatePlanet = async (req, res) => {
 };
 
 // Delete a Planet
-export const deletePlanet = async (req, res) => {
+const deletePlanet = async (req, res) => {
   try {
     const { id } = req.params;
     await Planet.findOneAndDelete({ _id: id });
@@ -80,3 +80,14 @@ export const deletePlanet = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
+
+const planetControllers = {
+    getAllPlanets,
+    getPlanetById,
+    createPlanet,
+    updatePlanet,
+    deletePlanet
+}
+
+export default planetControllers 
+
