@@ -81,7 +81,7 @@ const deletePlanet = async (req, res) => {
   }
 };
 
-const planetControllers = {
+const planetsController = {
     getAllPlanets,
     getPlanetById,
     createPlanet,
@@ -89,5 +89,5 @@ const planetControllers = {
     deletePlanet
 }
 
-export default planetControllers 
+export default planetsController
 

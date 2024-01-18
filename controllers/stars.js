@@ -47,10 +47,10 @@ const updateStar = async (req, res) => {
   }
 };
 
-const starsControllers = {
+const starController = {
   getAllStars,
   createStar,
   updateStar
 }
 
-export default starsControllers;
+export default starController;
