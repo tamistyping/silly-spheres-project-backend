@@ -1,8 +1,9 @@
 const cors = require("cors")
 const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
-import serverless from "serverless-http"
-import express, { Router } from "express"
+const serverless = require("serverless-http")
+const express = require("express")
+const router = express.Router()
 
 const starRoutes = require("../../routes/stars")
 const planetRoutes = require("../../routes/planets")
@@ -11,7 +12,6 @@ const userRoutes = require("../../routes/users")
 require("dotenv").config()
 
 const api = express()
-const router = Router()
 
 api.use(cors())
 api.use(express.json())
