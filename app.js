@@ -3,25 +3,21 @@ import express from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
+import favicon from 'serve-favicon'
 
 import starRoutes from "./routes/stars.js";
 import planetRoutes from "./routes/planets.js";
 import userRoutes from "./routes/users.js";
 
 const app = express();
-const port = 3000;
+const port = 3000
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(favicon('public/favicon.png'))
 
 // Connect to MongoDB
 mongoose.connect(process.env.DBURL)
-  .then(() => {
-    console.log("Connected to MongoDB");
-  })
-  .catch((error) => {
-    console.error("Failed to connect to MongoDB", error);
-  });
 
 app.use("/stars", starRoutes);
 app.use("/planets", planetRoutes);
@@ -34,5 +30,5 @@ app.get('/', (req, res) => {
 
 // Start server
 app.listen(port, () => {
-  console.log(`Server listening at http://localhost:${port}`);
-});
+  console.log(`Server listening at http://localhost:${port}`)
+})

@@ -12,18 +12,11 @@ import userRoutes from "../../routes/users.js";
 const api = express();
 
 mongoose.connect(process.env.DBURL)
-  .then(() => {
-    console.log("Connected to MongoDB");
-  })
-  .catch((error) => {
-    console.error("Failed to connect to MongoDB", error);
-  });
 
 api.use(cors());
 api.use(bodyParser.json());
 
 api.get('/', (req, res) => {
-    console.log('Hello World')
     res.sendStatus(200)
   })
 
@@ -32,7 +25,6 @@ const router = Router()
 router.use("/stars", starRoutes);
 router.use("/planets", planetRoutes);
 router.use("/users", userRoutes);
-
 
 api.use("/api/", router);
 
