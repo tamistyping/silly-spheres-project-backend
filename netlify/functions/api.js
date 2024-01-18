@@ -14,7 +14,7 @@ require("dotenv").config()
 const api = express()
 
 api.use(cors())
-api.use(express.json())
+// api.use(express.json())
 api.use(bodyParser.json())
 
 // Connect to MongoDB
