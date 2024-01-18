@@ -1,15 +1,15 @@
 import 'dotenv/config'
-import express from 'express'
+import express, { Router } from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
+import serverless from 'serverless-http'
 
 import starRoutes from "../../routes/stars.js";
 import planetRoutes from "../../routes/planets.js";
 import userRoutes from "../../routes/users.js";
 
 const api = express();
-const router = express.Router();
 
 api.use(cors());
 api.use(bodyParser.json());
@@ -24,11 +24,13 @@ mongoose
     console.error("Failed to connect to MongoDB", error);
   });
 
+const router = Router()
+
 router.use("/stars", starRoutes);
 router.use("/planets", planetRoutes);
 router.use("/users", userRoutes);
 
-app.get('/', (req, res) => {
+api.get('/', (req, res) => {
     console.log('Hello World')
     res.sendStatus(200)
   })
