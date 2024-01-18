@@ -33,4 +33,5 @@ router.use("/users", userRoutes)
 
 api.use("/api/", router)
 
-export const handler = serverless(api)
+const handler = serverless(api)
+modules.export = { handler }
