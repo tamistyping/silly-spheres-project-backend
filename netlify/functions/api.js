@@ -1,21 +1,17 @@
-import cors from "cors";
-import bodyParser from "body-parser";
-import mongoose from "mongoose";
-import serverless from "serverless-http";
-import express from "express";
+import 'dotenv/config'
+import express from 'express'
+import cors from 'cors'
+import bodyParser from 'body-parser'
+import mongoose from 'mongoose'
 
-import starRoutes from "../../routes/stars";
-import planetRoutes from "../../routes/planets";
-import userRoutes from "../../routes/users";
-
-import dotenv from "dotenv";
-dotenv.config();
+import starRoutes from "./routes/stars.js";
+import planetRoutes from "./routes/planets.js";
+import userRoutes from "./routes/users.js";
 
 const api = express();
 const router = express.Router();
 
 api.use(cors());
-api.use(express.json());
 api.use(bodyParser.json());
 
 // Connect to MongoDB
@@ -31,6 +27,11 @@ mongoose
 router.use("/stars", starRoutes);
 router.use("/planets", planetRoutes);
 router.use("/users", userRoutes);
+
+app.get('/', (req, res) => {
+    console.log('Hello World')
+    res.sendStatus(200)
+  })
 
 api.use("/api/", router);
 
