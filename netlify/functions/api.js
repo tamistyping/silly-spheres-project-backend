@@ -22,8 +22,8 @@ api.get('/', (req, res) => {
 
 const router = Router()
 
-router.use("/stars", starRoutes);
 router.use("/planets", planetRoutes);
+router.use("/stars", starRoutes);
 router.use("/users", userRoutes);
 
 api.use("/api/", router);
